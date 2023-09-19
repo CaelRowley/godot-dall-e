@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1be75stwc6ae"]
+
+[ext_resource type="Script" path="res://addons/texturegeneratorplugin/texture_generator_dock.gd" id="1_g53nb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4snqd"]
+font_size = 20
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3pxau"]
+
+[node name="TextureGeneratorDock" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g53nb")
+
+[node name="PromptInput" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "Texture generation prompt..."
+
+[node name="ImageSizeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 122.0
+offset_bottom = 95.0
+text = "Image Size: "
+label_settings = SubResource("LabelSettings_4snqd")
+vertical_alignment = 1
+
+[node name="ImageSizeDropdown" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 128.0
+offset_top = 56.0
+offset_bottom = 104.0
+grow_horizontal = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "256x256"
+popup/item_0/id = 0
+popup/item_1/text = "512x512"
+popup/item_1/id = 1
+popup/item_2/text = "1024x1024"
+popup/item_2/id = 2
+
+[node name="GenerateButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = 120.0
+offset_bottom = 168.0
+text = "Generate Texture"
+
+[node name="OutputImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.444
+anchor_right = 0.5
+anchor_bottom = 0.444
+offset_left = -96.0
+offset_top = -95.712
+offset_right = 96.0
+offset_bottom = 96.288
+texture = SubResource("PlaceholderTexture2D_3pxau")
+
+[connection signal="pressed" from="GenerateButton" to="." method="_on_generate_button_pressed"]
