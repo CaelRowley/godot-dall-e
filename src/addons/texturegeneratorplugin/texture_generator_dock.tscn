@@ -23,7 +23,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 40.0
 grow_horizontal = 2
-text = "Texture generation prompt..."
+placeholder_text = "Texture generation prompt..."
 
 [node name="ImageSizeLabel" type="Label" parent="."]
 layout_mode = 0
@@ -72,5 +72,6 @@ offset_top = -95.712
 offset_right = 96.0
 offset_bottom = 96.288
 texture = SubResource("PlaceholderTexture2D_3pxau")
+expand_mode = 1
 
 [connection signal="pressed" from="GenerateButton" to="." method="_on_generate_button_pressed"]
