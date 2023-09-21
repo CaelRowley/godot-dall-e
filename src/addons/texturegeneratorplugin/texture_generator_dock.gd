@@ -6,7 +6,6 @@ const CONFIG_FILE := "res://config.cfg"
 var prompt_input: TextEdit
 var size_dropwdown: OptionButton
 var generate_button: Button
-var output_image: TextureRect
 
 var api_key: String
 var url := "https://api.openai.com/v1/images/generations"
@@ -15,8 +14,12 @@ var headers: Array[String]
 var request_url: HTTPRequest
 var request_image: HTTPRequest
 
+var GeneratedImage = preload("res://addons/texturegeneratorplugin/generated_image.tscn")
+var image_container: VBoxContainer
+
 
 func _enter_tree():
+	image_container = $ScrollContainer/ImageContainer
 	var config: ConfigFile = ConfigFile.new()
 	config.load(CONFIG_FILE)
 	api_key = config.get_value("Secrets", "OpenAIAPIKey")
@@ -25,7 +28,6 @@ func _enter_tree():
 	prompt_input = $PromptInput
 	size_dropwdown = $ImageSizeDropdown
 	generate_button = $GenerateButton
-	output_image = $OutputImage
 	
 	request_url = HTTPRequest.new()
 	add_child(request_url)
@@ -67,7 +69,10 @@ func _on_request_image_completed(result, response_code, headers, body):
 	if err != OK:
 		print("Couldn't load image.")
 	var texture = ImageTexture.create_from_image(image)
-	output_image.texture = texture
+	var generated_image = GeneratedImage.instantiate()
+	image_container.add_child(generated_image)
+	generated_image.set(prompt_input.text, texture)
+	
 	generate_button.disabled = false
 	prompt_input.editable = true
 	prompt_input.text = ""

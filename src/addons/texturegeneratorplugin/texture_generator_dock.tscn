@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1be75stwc6ae"]
+[gd_scene load_steps=3 format=3 uid="uid://d1be75stwc6ae"]
 
 [ext_resource type="Script" path="res://addons/texturegeneratorplugin/texture_generator_dock.gd" id="1_g53nb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4snqd"]
 font_size = 20
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3pxau"]
 
 [node name="TextureGeneratorDock" type="Control"]
 clip_contents = true
@@ -60,18 +58,17 @@ offset_top = 120.0
 offset_bottom = 168.0
 text = "Generate Texture"
 
-[node name="OutputImage" type="TextureRect" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.444
-anchor_right = 0.5
-anchor_bottom = 0.444
-offset_left = -96.0
-offset_top = -95.712
-offset_right = 96.0
-offset_bottom = 96.288
-texture = SubResource("PlaceholderTexture2D_3pxau")
-expand_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImageContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="pressed" from="GenerateButton" to="." method="_on_generate_button_pressed"]
