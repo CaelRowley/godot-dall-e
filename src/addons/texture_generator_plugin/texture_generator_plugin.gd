@@ -1,11 +1,10 @@
 @tool
 extends EditorPlugin
 
-var dock
+var dock := preload("res://addons/texture_generator_plugin/texture_generator_dock.tscn").instantiate() as Control
 
 
 func _enter_tree():
-	dock = preload("res://addons/texturegeneratorplugin/texture_generator_dock.tscn").instantiate()
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, dock)
 
 

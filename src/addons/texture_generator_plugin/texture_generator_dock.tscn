@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d1be75stwc6ae"]
 
-[ext_resource type="Script" path="res://addons/texturegeneratorplugin/texture_generator_dock.gd" id="1_g53nb"]
+[ext_resource type="Script" path="res://addons/texture_generator_plugin/texture_generator_dock.gd" id="1_503kd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4snqd"]
 font_size = 20
@@ -13,7 +13,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g53nb")
+script = ExtResource("1_503kd")
+headers = Array[String](["Content-type: application/json", "Authorization: Bearer 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"])
 
 [node name="PromptInput" type="TextEdit" parent="."]
 layout_mode = 1
@@ -56,6 +57,7 @@ anchors_preset = -1
 anchor_right = 1.0
 offset_top = 120.0
 offset_bottom = 168.0
+disabled = true
 text = "Generate Texture"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -71,4 +73,5 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[connection signal="text_changed" from="PromptInput" to="." method="_on_prompt_input_text_changed"]
 [connection signal="pressed" from="GenerateButton" to="." method="_on_generate_button_pressed"]

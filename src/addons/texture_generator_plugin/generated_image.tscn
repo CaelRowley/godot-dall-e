@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://jrp04r2xyf2m"]
 
-[ext_resource type="Script" path="res://addons/texturegeneratorplugin/generated_image.gd" id="1_gpvnh"]
+[ext_resource type="Script" path="res://addons/texture_generator_plugin/generated_image.gd" id="1_bm4ks"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xe86s"]
 
 [node name="GeneratedImage" type="Panel"]
 custom_minimum_size = Vector2(256, 320)
-script = ExtResource("1_gpvnh")
+script = ExtResource("1_bm4ks")
 
 [node name="OutputImage" type="TextureRect" parent="."]
 layout_mode = 1

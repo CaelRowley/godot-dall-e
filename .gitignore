@@ -18,4 +18,4 @@ mono_crash.*.json
 src/imports/*
 
 # private env variables
-src/config.cfg
+src/config/config.cfg
